@@ -224,7 +224,7 @@ body {
   border-bottom: 2px solid #bdc3c7;
 }
 .daysgrid__tasks ul {
-  list-tyle: none;
+  list-style: none;
   width: 80%;
   margin: 0 auto;
   padding: 1em 0;
