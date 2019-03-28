@@ -1,57 +1,56 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
-  <title>Calendar + task list (vanilla js)</title>
+  <title>TODOs calendar</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-
-  
-      <link rel="stylesheet" href="css/style.css">
-
-  
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300&subset=latin-ext,latin' rel='stylesheet'
+    type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
 
-  
-<main id="calendar">
-  <header id="header" class="header">
-    <div class="header__arrow arrow--left">
-      <div class="arrow__circle">
-        <div class="arrow__arrow">
-          <div class="arrow__pipe"></div>
-          <div class="arrow__triangle"></div>
-        </div>
-      </div>
-    </div>
-    <div class="header__main-date">
-      <div class="main-date__container"><span class="main-date__container__day"></span>
-        <div class="day__month__wrapper"><span class="main-date__container__month"></span><span class="main-date__container__year"></span></div>
-      </div>
-    </div>
-    <div class="header__arrow arrow--right">
-      <div class="arrow__circle">
-        <div class="arrow__arrow">
-          <div class="arrow__pipe"></div>
-          <div class="arrow__triangle"></div>
-        </div>
-      </div>
-    </div>
-  </header>
-  <section id="days" class="days"></section>
-  <section id="daysgrid" class="daysgrid"></section>
-</main>
 
-<script type="text/x-handlebars-template" id="days_template">
+  <main id="calendar">
+    <header id="header" class="header">
+      <div class="header__arrow arrow--left">
+        <div class="arrow__circle">
+          <div class="arrow__arrow">
+            <div class="arrow__pipe"></div>
+            <div class="arrow__triangle"></div>
+          </div>
+        </div>
+      </div>
+      <div class="header__main-date">
+        <div class="main-date__container"><span class="main-date__container__day"></span>
+          <div class="day__month__wrapper"><span class="main-date__container__month"></span><span
+              class="main-date__container__year"></span></div>
+        </div>
+      </div>
+      <div class="header__arrow arrow--right">
+        <div class="arrow__circle">
+          <div class="arrow__arrow">
+            <div class="arrow__pipe"></div>
+            <div class="arrow__triangle"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section id="days" class="days"></section>
+    <section id="daysgrid" class="daysgrid"></section>
+  </main>
+
+  <script type="text/x-handlebars-template" id="days_template">
   {{#each days}}
   <div class="days__day"><span>{{this}}</span></div>
   {{/each}}
 </script>
 
-<script type="text/x-handlebars-template" id="cal">
+  <script type="text/x-handlebars-template" id="cal">
   {{#each days}}
     {{#unless this.first}}
       {{#if this.newWeek}}
@@ -78,7 +77,7 @@
   {{/each}}
 </script>
 
-<script type="text/x-handlebars-template" id="tasks">
+  <script type="text/x-handlebars-template" id="tasks">
   <div class="daysgrid__tasks" data-tasksfor="{{this.date}}">
     <ul class="tasks">
       {{#each tasks}}
@@ -97,7 +96,7 @@
   </div>
 </script>
 
-<script type="text/x-handlebars-template" id="task">
+  <script type="text/x-handlebars-template" id="task">
   <li class="tasks__task">
     <input type="checkbox" id="{{this.id}}" />
     <label for="{{this.id}}">{{this.title}}</label>
@@ -105,15 +104,14 @@
   </li>
 </script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment-with-locales.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment-with-locales.min.js'></script>
 
-  
 
-    <script  src="js/index.js"></script>
+
+  <script src="js/index.js"></script>
 
 
 
 
 </body>
-
 </html>
