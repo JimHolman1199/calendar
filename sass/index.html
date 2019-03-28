@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Calendar + task list (vanilla js)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300&subset=latin-ext,latin' rel='stylesheet'
+    type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+
+  <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+<body>
+
+
+  <main id="calendar">
+    <header id="header" class="header">
+      <div class="header__arrow arrow--left">
+        <div class="arrow__circle">
+          <div class="arrow__arrow">
+            <div class="arrow__pipe"></div>
+            <div class="arrow__triangle"></div>
+          </div>
+        </div>
+      </div>
+      <div class="header__main-date">
+        <div class="main-date__container"><span class="main-date__container__day"></span>
+          <div class="day__month__wrapper"><span class="main-date__container__month"></span><span
+              class="main-date__container__year"></span></div>
+        </div>
+      </div>
+      <div class="header__arrow arrow--right">
+        <div class="arrow__circle">
+          <div class="arrow__arrow">
+            <div class="arrow__pipe"></div>
+            <div class="arrow__triangle"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section id="days" class="days"></section>
+    <section id="daysgrid" class="daysgrid"></section>
+  </main>
+
+  <script type="text/x-handlebars-template" id="days_template">
+  {{#each days}}
+  <div class="days__day"><span>{{this}}</span></div>
+  {{/each}}
+</script>
+
+  <script type="text/x-handlebars-template" id="cal">
+  {{#each days}}
+    {{#unless this.first}}
+      {{#if this.newWeek}}
+      </div>
+      {{/if}}
+    {{/unless}}
+    {{#if this.newWeek}}
+    <div class="daysgrid__week">
+    {{/if}}
+    {{#if this.today}}
+        <div class="daysgrid__day daysgrid__day--today" data-date="{{this.date}}">
+    {{else}}
+        <div class="daysgrid__day " data-date="{{this.date}}">
+    {{/if}}
+        {{#if this.has_tasks}}
+          <div class="day__status day__status--undone"></div>
+        {{else if this.done}}
+          <div class="day__status day__status--done"></div>
+        {{else}}
+          <div class="day__status"></div>
+        {{/if}}
+          <div class="day__number">{{this.number}}</div>
+      </div>
+  {{/each}}
+</script>
+
+  <script type="text/x-handlebars-template" id="tasks">
+  <div class="daysgrid__tasks" data-tasksfor="{{this.date}}">
+    <ul class="tasks">
+      {{#each tasks}}
+      <li class="tasks__task" data-taskid="{{this.id}}">
+        {{#if this.done}}
+          <input type="checkbox" id="{{this.id}}" checked="true"/>
+        {{else}}
+          <input type="checkbox" id="{{this.id}}" />
+        {{/if}}
+        <label for="{{this.id}}">{{this.title}}</label>
+        <button class="btn"><i class="cross"></i></button>
+      </li>
+      {{/each}}
+    </ul>
+    <input type="text" id="task_input" placeholder="Add task" name="task"/>
+  </div>
+</script>
+
+  <script type="text/x-handlebars-template" id="task">
+  <li class="tasks__task">
+    <input type="checkbox" id="{{this.id}}" />
+    <label for="{{this.id}}">{{this.title}}</label>
+    <button class="btn"><i class="cross"></i></button>
+  </li>
+</script>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js'></script>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment-with-locales.min.js'></script>
+
+
+
+  <script src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>

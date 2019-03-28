@@ -1,0 +1,3 @@
+A Pen created at CodePen.io. You can find this one at https://codepen.io/jimholman1199/pen/MxNpVX.
+
+ My first **finished and working** js "app". It's a simple calendar with task list for every day. Actual day is highlighted, days with all tasks finished have green indicator, with unfinished tasks red one. Tasks are stored in localStorage. It's a ugly spaghetti code, need rewrite/refactor to oo + observer pattern, mvc or subscribe/  publish.
