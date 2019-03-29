@@ -31,7 +31,7 @@
   }
 
   function createCalendar(date, container) {
-    let date = moment(date);
+    var date = moment(date);
     let now_date = moment();
 
     let days = date.daysInMonth();
